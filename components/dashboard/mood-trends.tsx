@@ -50,9 +50,9 @@ export function MoodTrends() {
 
             {/* Gradient Bar */}
             <div
-              className={`w-6 sm:w-6 lg:w-8 bg-linear-to-t ${item.gradient} rounded-lg transition-all duration-200 hover:shadow-md`}
+              className={`w-4 sm:w-5 lg:w-8 min-h-14 sm:min-h-20 lg:min-h-24 max-h-28 sm:max-h-40 lg:max-h-56 [height:calc(var(--bar-value)*0.6px)] sm:[height:calc(var(--bar-value)*0.9px)] lg:[height:calc(var(--bar-value)*1.3px)] bg-linear-to-t ${item.gradient} rounded-lg transition-all duration-200 hover:shadow-md`}
               style={{
-                height: `${item.value * 1.5}px`,
+                ['--bar-value' as string]: item.value,
               }}
             />
 

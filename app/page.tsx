@@ -1,5 +1,6 @@
 'use client'
 
+import { useState } from 'react'
 import { Sidebar } from '@/components/dashboard/sidebar'
 import { Navbar } from '@/components/dashboard/navbar'
 import { Greeting } from '@/components/dashboard/greeting'
@@ -14,19 +15,21 @@ import { SkillsProgress } from '@/components/dashboard/skills-progress'
 import { MindGym } from '@/components/dashboard/mind-gym'
 
 export default function Home() {
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false)
+
   return (
-    <div className="flex h-screen bg-gray-50">
+    <div className="flex min-h-screen bg-gray-50">
       {/* Sidebar */}
-      <Sidebar />
+      <Sidebar isOpen={isSidebarOpen} onClose={() => setIsSidebarOpen(false)} />
 
       {/* Main Content */}
-      <div className="flex-1 ml-60 flex flex-col overflow-hidden">
+      <div className="flex-1 md:ml-60 flex flex-col overflow-hidden">
         {/* Navbar */}
-        <Navbar />
+        <Navbar onMenuClick={() => setIsSidebarOpen(prev => !prev)} />
 
         {/* Scrollable Content */}
         <main className="flex-1 overflow-y-auto">
-          <div className="p-8 space-y-8">
+          <div className="p-4 sm:p-6 lg:p-8 space-y-6 sm:space-y-8">
             {/* Greeting */}
             <Greeting />
 
@@ -34,11 +37,11 @@ export default function Home() {
             <AISection />
 
             {/* Top Cards Grid */}
-            <div className="grid grid-cols-12 gap-6">
-              <div className="col-span-7 md:col-span-8 sm:col-span-12">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-6">
+              <div className="lg:col-span-7">
                 <FocusCard />
               </div>
-              <div className="col-span-5 md:col-span-4 sm:col-span-12">
+              <div className="lg:col-span-5">
                 <WellnessCard />
               </div>
             </div>
@@ -47,9 +50,9 @@ export default function Home() {
             <RoadmapSection />
 
             {/* Two Column Layout: Build Basics + Mood/Recommended/Skills */}
-            <div className="grid grid-cols-12 gap-6">
+            <div className="grid grid-cols-1 xl:grid-cols-12 gap-4 sm:gap-6">
               {/* Left Column - Build Basics + Mind Gym */}
-              <div className="col-span-6 lg:col-span-8 md:col-span-12">
+              <div className="xl:col-span-8">
                 <div className="space-y-6">
                   <BuildBasics />
                   <MindGym />
@@ -57,7 +60,7 @@ export default function Home() {
               </div>
 
               {/* Right Column - Mood Trends + Recommended + Skills */}
-              <div className="col-span-6 lg:col-span-4 md:col-span-12">
+              <div className="xl:col-span-4">
                 <div className="space-y-2">
                   <MoodTrends />
                   <Recommended />

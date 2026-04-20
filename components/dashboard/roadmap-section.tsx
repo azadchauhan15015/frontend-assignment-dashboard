@@ -19,8 +19,8 @@ function getProgressWidth(): string {
 
 export function RoadmapSection() {
   return (
-    <div className="bg-white rounded-xl border border-gray-200 p-6">
-      <div className="flex items-center justify-between mb-8">
+    <div className="bg-white rounded-xl border border-gray-200 p-4 sm:p-6">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-6 sm:mb-8">
         <h3 className="font-bold text-gray-900 flex items-center gap-3 text-lg">
           <span className="text-teal-600">≡</span> Career Roadmap
         </h3>
@@ -29,7 +29,7 @@ export function RoadmapSection() {
         </a>
       </div>
 
-      <div className="relative mb-8">
+      <div className="relative mb-8 overflow-x-auto">
         {/* Gray base line */}
         <div className="absolute top-6 left-0 right-0 h-0.5 bg-gray-300" />
 
@@ -39,7 +39,7 @@ export function RoadmapSection() {
           style={{ width: getProgressWidth() }}
         />
 
-        <div className="flex items-start justify-between relative z-10">
+        <div className="flex items-start justify-between relative z-10 min-w-[620px]">
           {milestones.map((milestone, index) => (
             <div key={index} className="flex flex-col items-center">
               <div className="mb-3">
@@ -65,13 +65,13 @@ export function RoadmapSection() {
         </div>
       </div>
 
-      <div className="bg-teal-50 rounded-lg p-5 border border-teal-100">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-3">
+      <div className="bg-teal-50 rounded-lg p-4 sm:p-5 border border-teal-100">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+          <div className="flex items-start sm:items-center gap-3">
             <div className="w-6 h-6 rounded-full flex items-center justify-center">
               <Target className="w-6 h-6 text-teal-500" />
             </div>
-            <span className="font-semibold text-teal-700">Next Milestone: Strengthen Concepts</span>
+            <span className="font-semibold text-teal-700 text-sm sm:text-base">Next Milestone: Strengthen Concepts</span>
           </div>
           <span className="font-bold text-teal-600 text-lg">{NEXT_PROGRESS}%</span>
         </div>
